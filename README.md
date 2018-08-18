@@ -5,7 +5,7 @@ This is a simple way to convert original **mnist** to `TFRecord` for a geater ef
 ## Preparation
 Some packages is need
 ```shell
-pip3 install tensorflow numpy opencv-python 
+pip3 install tensorflow numpy opencv-python progressbar
 ```
 
 ## Usage
