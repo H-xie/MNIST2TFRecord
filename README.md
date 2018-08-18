@@ -2,6 +2,12 @@
 
 This is a simple way to convert original **mnist** to `TFRecord` for a geater effective.
 
+## Preparation
+Some packages is need
+```shell
+pip3 install tensorflow numpy opencv-python 
+```
+
 ## Usage
 1. Need to download and unzip [mnist](http://yann.lecun.com/exdb/mnist/) by
   ```shell
