@@ -21,7 +21,6 @@ def mnist2tfrd(path, train, recordname):
     else:
         file_pre = 't10k'
         num_data = 10000
-        
     if recordname == '':
         recordname = file_pre + '.tfrd'
 
