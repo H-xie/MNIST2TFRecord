@@ -14,7 +14,6 @@ cfg = tf.flags.FLAGS
 
 
 def mnist2tfrd(path, train, recordname):
-    # path = 'mnist'
     if train:
         file_pre = 'train'
         num_data = 60000
@@ -32,9 +31,6 @@ def mnist2tfrd(path, train, recordname):
     loaded = np.fromfile(file=fd, dtype=np.uint8)
     trainY = loaded[8:].reshape((num_data)).astype(np.int64)
 
-    # print(trainX.shape, trainY.shape)
-    # print(trainX[0])
-
     # make train.tfr
     def _int64_feature(value):
         return tf.train.Feature(int64_list=tf.train.Int64List(value=value))
@@ -42,8 +38,6 @@ def mnist2tfrd(path, train, recordname):
     def _bytes_feature(value):
         return tf.train.Feature(bytes_list=tf.train.ByteList(value=value))
 
-    # setname = 'mnist'
-    # recordname = 'original_train.tfrd'
     print('making %s record...' % file_pre)
 
     writer = tf.python_io.TFRecordWriter(os.path.join(path, recordname))
@@ -65,8 +59,6 @@ def mnist2tfrd(path, train, recordname):
 
         pbar.update(i / num_data * 100)
 
-        # if i % 100 == 0:
-            # pbar.update(i / num_data * 100)
     writer.close()
     print('%s is complete' % recordname)
 
