@@ -5,11 +5,11 @@ import tensorflow as tf
 from progressbar import ProgressBar
 
 flags = tf.flags
-flags.DEFINE_boolean('train', True, '')
-flags.DEFINE_string('path', 'mnist', '')
-flags.DEFINE_boolean('validate', True, '')
-flags.DEFINE_string('recordname', '', '')
-flags.DEFINE_boolean('make', True, '')
+flags.DEFINE_boolean('train', True, 'IF data set is train?')
+flags.DEFINE_string('path', 'mnist', 'Path to minist. Should be unzip first')
+flags.DEFINE_boolean('validate', True, 'Do you want to validate your tfrecord?')
+flags.DEFINE_string('recordname', '', 'Name of record. Leave empty to use the default')
+flags.DEFINE_boolean('make', True, 'Do you want to make tfrecord? False, if you just want validation')
 cfg = tf.flags.FLAGS
 
 
@@ -81,8 +81,6 @@ def test_tfrd(path, recordname):
         for i in parsed_features:
             parsed_features[i] = tf.cast(parsed_features[i], tf.int16)
         print(parsed_features)
-        # parsed_features = tf.cast(parsed_features, tf.int32)
-        # out_features = (tf.cast(i, tf.int32) for i in parsed_features)
         return parsed_features
 
     recordname = os.path.join(path, recordname)
