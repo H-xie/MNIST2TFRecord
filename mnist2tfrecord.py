@@ -8,7 +8,7 @@ flags = tf.flags
 flags.DEFINE_boolean('train', True, '')
 flags.DEFINE_string('path', 'mnist', '')
 flags.DEFINE_boolean('validate', True, '')
-flags.DEFINE_string('recordname', 'train.tfrd', '')
+flags.DEFINE_string('recordname', '', '')
 flags.DEFINE_boolean('make', True, '')
 cfg = tf.flags.FLAGS
 
@@ -21,6 +21,9 @@ def mnist2tfrd(path, train, recordname):
     else:
         file_pre = 't10k'
         num_data = 10000
+        
+    if recordname == '':
+        recordname = file_pre + '.tfrd'
 
     fd = open(os.path.join(path, '%s-images-idx3-ubyte' % file_pre))
     loaded = np.fromfile(file=fd, dtype=np.uint8)
